@@ -1,0 +1,20 @@
+import React from 'react';
+import { Button, Row, Col, Image } from 'react-bootstrap'
+import './cart.css'
+
+export default function CartProduct(props) {
+    return (
+        <Row>
+            <Col><Image src={props.image} className="cartItem-image" />
+                <div>{props.name}</div>
+                <div>HK${props.price}</div></Col>
+            <Col>
+                <div>Quantity: {props.quantity}</div>
+                <Button id={props.id} onClick={props.addOne} className='m-1'> + </Button>
+                <Button id={props.id} onClick={props.minusOne} className='m-1'> - </Button></Col>
+            <Col>
+                <div>Total Price:{props.totalPrice}</div></Col>
+
+        </Row>
+    )
+}
