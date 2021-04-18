@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react'
-import { Container, Image } from 'react-bootstrap';
+import React, { useState } from 'react'
+import { Container } from 'react-bootstrap';
 import NavBar from './NavBar';
 import Banner from './Banner';
 import macha from '../../pictures/macha.jpg'

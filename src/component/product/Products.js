@@ -11,6 +11,7 @@ export default function Products() {
 
     const [cartItem, setCartItem] = useContext(CartContext)
     const [inputValue, setInputValue] = useState('')
+    const [selectValue, setSelectValue] = useState('')
     const [displayItemArray, setDisplayItemArray] = useState(database.arrayOfProducts)
 
     const addToCartHandler = (e) => {
@@ -43,21 +44,42 @@ export default function Products() {
             </Col>)
     })
 
-
-
     const searchHandler = () => {
-        const filteredItem = database.arrayOfProducts.filter(item => {
-            return item.name === inputValue
-        })
-        setDisplayItemArray(filteredItem)
+        if (inputValue.trim() !== "" | inputValue.length !== 0) {
+            // const inputValueUpper = inputValue.toUpperCase()
+            const filteredItem = database.arrayOfProducts.filter(item => {
+                return item.name.toUpperCase().includes(inputValue.toUpperCase())
+            })
+            setDisplayItemArray(filteredItem)
+        } else {
+            setDisplayItemArray(database.arrayOfProducts)
+        }
+    }
+
+    const sortHandler = (e) => {
+        setSelectValue(e.target.value)
+        const newSortArray = [...database.arrayOfProducts]
+        if (selectValue === 'fromHightToLow') {
+            newSortArray.sort((a, b) => {
+                return (
+                    ((a.price > b.price) ? 1 : -1)
+                )
+            })
+        } else {
+            newSortArray.sort((a, b) => {
+                return (
+                    ((a.price > b.price) ? -1 : 1)
+                )
+            })
+        }
+
+        setDisplayItemArray(newSortArray);
     }
 
 
     const inputValueHandler = (e) => {
         setInputValue(e.target.value)
     }
-
-
 
     return (
         <Container fluid='true' className='overflow-hidden'>
@@ -67,7 +89,15 @@ export default function Products() {
                     inputValue={inputValue}
                     setInputValue={inputValueHandler}
                     searchHandler={searchHandler}
-                    resetHandler={() => { setDisplayItemArray(database.arrayOfProducts) }} /></Col></Row>
+                    resetHandler={() => { setDisplayItemArray(database.arrayOfProducts) }, () => { setInputValue('') }}
+                    sortHandlerHigh={() => sortHandler(true)}
+                    sortHandlerLow={() => sortHandler(false)}
+                    sortHandler={sortHandler}
+                    value={selectValue}
+                />
+
+                </Col>
+            </Row>
 
             <Row className='m-0 px-1' xs sm={2} md lg xl={4}>
                 {displayItemArray.length === 0 && <h5 className='my-3'>No result is found !</h5>}

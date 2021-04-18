@@ -21,13 +21,13 @@
 }
 
 .products-search {
-    width: 50%;
-    border: 3px solid #00B4CC;
+    width: 40%;
+    border: 3px solid #2E544A;
     padding: 5px;
     height: 30px;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: #000000;
     margin: 1% 1%;
 }
 

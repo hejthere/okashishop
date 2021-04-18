@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { CartContext } from '../../CartContext'
 import CartProduct from './CartProduct'
 
 export default function CartBox(props) {
     const [cartItem, setCartItem] = useContext(CartContext);
+
+    useEffect(() => {
+        localStorage.setItem('cartItem', JSON.stringify(cartItem))
+    }, [cartItem])
 
     const quantityHandler = (e, isAdded) => {
         const addedItem = cartItem.find(item => item.id === e.target.id)
@@ -37,6 +41,7 @@ export default function CartBox(props) {
 
     return (
         <Modal
+            size='lg'
             show={props.show}
             onHide={props.onHide}
             dialogClassName="shopping-cart-box"
@@ -51,7 +56,7 @@ export default function CartBox(props) {
                 {cartItem.length === 0 && <div>Oops! Nothing is in the cart. </div>}
                 {cartList}
                 <div className="w-100 d-flex justify-content-end">
-                    <Button>Check Out</Button></div>
+                    <Button variant='info'>Check Out</Button></div>
             </Modal.Body>
         </Modal>
     )
