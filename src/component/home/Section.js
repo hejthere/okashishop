@@ -9,20 +9,21 @@ export default function Section() {
     const productList = [
         {
             picture: tea,
-            description: 'Tea Powder'
+            description: 'Looking for tea leaf?',
+            hiddenText: "Order Online & Save Time!"
         },
         {
             picture: dishes,
-            description: 'Utensil'
-
+            description: 'Join our event!',
+            hiddenText: 'Coming soon!'
         }
     ]
 
     const productItem = productList.map(item => {
         return (
-
-            <Col className='p-0 section-container'>
-                <Image className='section-picture' src={item.picture} />
+            <Col key={item.description} className='p-0 section-container'>
+                <Image className='section-picture' src={item.picture} fluid='true' />
+                <div className="section-hidden-text">{item.hiddenText}</div>
                 <div className="section-text">{item.description}</div>
             </Col>
         )

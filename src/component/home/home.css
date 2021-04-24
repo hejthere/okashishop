@@ -1,6 +1,6 @@
 .banner-container {
     position: relative;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -47,30 +47,48 @@
 }
 
 .section-picture {
-    width: 400px;
-    height: 300px;
+    width: 50%;
+    height: 100%;
     object-fit: cover;
+    position: absolute;
+    z-index: 10;
+    transform: translate(0, 0);
+    transition: transform 1.5s;
+}
+
+.section-container:hover>.section-picture {
+    transform: translate(100%, 0);
+    transition: transform 2.5s;
+    z-index: 10;
 }
 
 .section-container {
     border: white 2px solid;
+    height: 35vh;
+    max-height: 300px;
     max-width: 300px;
     background-color: #2E544A;
     position: relative;
-    opacity: 1;
+    overflow: hidden;
 }
 
-.section-container:hover {
-    opacity: 0.8;
-    transition: 0.1s;
-    cursor: pointer;
+.section-hidden-text,
+.section-text {
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
+.section-hidden-text {
+    width: 250px;
+    overflow: visible;
+    top: 50%;
+    left: 30%;
 }
 
 .section-text {
-    color: white;
-    font-size: 2rem;
-    position: absolute;
     top: 50%;
     left: 80%;
-    transform: translate(-50%, -50%);
 }

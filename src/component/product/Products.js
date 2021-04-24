@@ -1,24 +1,38 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef, useEffect, useCallback } from 'react'
 import { Container, Row, Col } from 'react-bootstrap';
 import './product.css';
 import Product from './Product';
-import database from '../../data.json'
 import { CartContext } from '../../CartContext'
 import SearchBox from './SearchBox'
+
 
 
 export default function Products() {
 
     const [cartItem, setCartItem] = useContext(CartContext)
-    const [inputValue, setInputValue] = useState('')
+    const searchRef = useRef()
     const [selectValue, setSelectValue] = useState('')
-    const [displayItemArray, setDisplayItemArray] = useState(database.arrayOfProducts)
+    const [database, setDatabase] = useState([])
+    const [displayItemArray, setDisplayItemArray] = useState([])
+
+    const fetchDatabase = useCallback(async () => {
+        const response = await fetch('http://my-json-server.typicode.com/hejthere/picture/db');
+        const data = await response.json()
+        setDatabase(data.arrayOfProducts || [])
+    }, [])
+    useEffect(() => {
+        fetchDatabase();
+    }, [fetchDatabase])
+    useEffect(() => {
+        setDisplayItemArray(database)
+    }, [database])
+
 
     const addToCartHandler = (e) => {
-        let addedItem = database.arrayOfProducts.find(item => item.id === e.target.id)
+        let addedItem = database.find(item => item.id === e.target.id)
         let isExisted = cartItem.find(item => item.id === addedItem.id)
         if (!isExisted) {
-            setCartItem(prevCart => [...cartItem, addedItem])
+            setCartItem([...cartItem, addedItem])
         }
         else {
             let itemIndex = cartItem.indexOf(addedItem)
@@ -45,20 +59,20 @@ export default function Products() {
     })
 
     const searchHandler = () => {
-        if (inputValue.trim() !== "" | inputValue.length !== 0) {
-            // const inputValueUpper = inputValue.toUpperCase()
-            const filteredItem = database.arrayOfProducts.filter(item => {
-                return item.name.toUpperCase().includes(inputValue.toUpperCase())
+        const searchValue = searchRef.current.value
+        if (searchValue.trim() !== "" | searchValue.length !== 0) {
+            const filteredItem = database.filter(item => {
+                return item.name.toUpperCase().includes(searchValue.toUpperCase())
             })
             setDisplayItemArray(filteredItem)
         } else {
-            setDisplayItemArray(database.arrayOfProducts)
+            setDisplayItemArray(database)
         }
     }
 
     const sortHandler = (e) => {
         setSelectValue(e.target.value)
-        const newSortArray = [...database.arrayOfProducts]
+        const newSortArray = [...database]
         if (selectValue === 'fromHightToLow') {
             newSortArray.sort((a, b) => {
                 return (
@@ -76,26 +90,19 @@ export default function Products() {
         setDisplayItemArray(newSortArray);
     }
 
-
-    const inputValueHandler = (e) => {
-        setInputValue(e.target.value)
-    }
-
     return (
         <Container fluid='true' className='overflow-hidden'>
-            <Row>
+            <Row xs={1} sm={1} md lg xl={2}>
                 <Col><h2 className='pt-3'> Feature Items: </h2></Col>
                 <Col><SearchBox
-                    inputValue={inputValue}
-                    setInputValue={inputValueHandler}
+                    forwardedRef={searchRef}
                     searchHandler={searchHandler}
-                    resetHandler={() => { setDisplayItemArray(database.arrayOfProducts) }, () => { setInputValue('') }}
+                    resetHandler={() => { setDisplayItemArray(database) }, () => { searchRef.current.value = '' }}
                     sortHandlerHigh={() => sortHandler(true)}
                     sortHandlerLow={() => sortHandler(false)}
                     sortHandler={sortHandler}
                     value={selectValue}
                 />
-
                 </Col>
             </Row>
 

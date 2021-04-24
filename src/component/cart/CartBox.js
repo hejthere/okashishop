@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Modal, Button } from 'react-bootstrap'
 import { CartContext } from '../../CartContext'
 import CartProduct from './CartProduct'
+import { useAuth } from '../../firebaseAuth/AuthContext'
 
 export default function CartBox(props) {
     const [cartItem, setCartItem] = useContext(CartContext);
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         localStorage.setItem('cartItem', JSON.stringify(cartItem))
@@ -56,8 +59,8 @@ export default function CartBox(props) {
                 {cartItem.length === 0 && <div>Oops! Nothing is in the cart. </div>}
                 {cartList}
                 <div className="w-100 d-flex justify-content-end">
-                    <Button variant='info'>Check Out</Button></div>
+                    <Button href={currentUser ? './checkout' : './login'} variant='info'>Check Out</Button></div>
             </Modal.Body>
-        </Modal>
+        </Modal >
     )
 }
