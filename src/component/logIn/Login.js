@@ -113,7 +113,11 @@ export default function Login() {
                                     {error && <Alert variant='danger'>{error}</Alert>}
                                     {displayForm}
                                     <Button type='submit'>{isLogin ? 'Log In' : 'Sign In'}</Button>
-                                    <div className='my-3'>{isLogin ? "Haven't sign up yet ? " : "Already have an account ? "}<Link onClick={switchPageHandler} to={isLogin ? '/signup' : '/login'}>{isLogin ? 'Sign up here' : 'Log in here'}</Link></div>
+                                    <Button className='mx-3' href='/'>Back</Button>
+                                    <div className='my-3'>{isLogin ? "Haven't sign up yet ? " : "Already have an account ? "}
+                                        <Link onClick={switchPageHandler}
+                                            to={isLogin ? '/signup' : '/login'}>{isLogin ? 'Sign up here' : 'Log in here'}</Link>
+                                    </div>
                                 </Form>
                             </Card.Body>
                         </Card>
