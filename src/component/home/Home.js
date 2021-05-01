@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container } from 'react-bootstrap';
 import NavBar from './NavBar';
 import Banner from './Banner';
@@ -29,10 +29,6 @@ export default function Home() {
 
     const [showCart, setShowCart] = useState(false);
 
-    useEffect(() => {
-        console.log(currentUser)
-    }, [])
-
 
     return (
         <Container fluid='true'>
@@ -42,7 +38,8 @@ export default function Home() {
             <Banner backgrounds={macha} />
             <Section />
             <Products />
-            <CartBox checkOutHandler={checkOutHandler}
+            <CartBox
+                checkOutHandler={checkOutHandler}
                 show={showCart}
                 onHide={() => setShowCart(false)} />
         </Container>

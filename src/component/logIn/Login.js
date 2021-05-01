@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
-import { Button, Form, Card, Alert, Image, Row, Col, Container } from 'react-bootstrap';
+import { Button, Form, Card, Alert, Row, Col, Container } from 'react-bootstrap';
 import './login.css'
 import { useAuth } from '../../firebaseAuth/AuthContext'
 
@@ -12,7 +12,7 @@ export default function Login() {
     const confirmPasswordRef = useRef()
     const history = useHistory()
 
-    const { signUp, currentUser, login } = useAuth()
+    const { signUp, login } = useAuth()
     const [error, setError] = useState()
     const [isLogin, setIsLogin] = useState(true)
 
@@ -53,7 +53,7 @@ export default function Login() {
         return (
             <Form.Group key={el.id} >
                 <Form.Label>{el.label}</Form.Label>
-                <Form.Control type={el.type} ref={el.ref} placeholder={el.placeholder} />
+                <Form.Control required type={el.type} ref={el.ref} placeholder={el.placeholder} />
             </Form.Group>)
 
     })

@@ -1,7 +1,5 @@
-import { auth } from './firebase';
+import { auth, database } from './firebase';
 import firebase from 'firebase/app';
-
-
 import React, { useContext, useState, useEffect } from 'react';
 
 const userContext = React.createContext();
@@ -37,6 +35,22 @@ export function AuthProvider({ children }) {
         }
     }
 
+
+
+    async function updateCartHistory(userId, info, date) {
+        try {
+            const userInfo = database.ref('user/' + userId + `/${Date.now()}`);
+            await userInfo.set({
+                name: info.name,
+                address: info.address,
+                cartItem: info.cartItem,
+                date: date
+            })
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -49,12 +63,14 @@ export function AuthProvider({ children }) {
     }, [])
 
 
+
     const value = {
         currentUser,
         setCurrentUser,
         signUp,
         login,
-        signOut
+        signOut,
+        updateCartHistory,
     }
 
     return (

@@ -7,23 +7,29 @@ import { AuthProvider } from './firebaseAuth/AuthContext'
 import { Route, Switch } from 'react-router-dom'
 import Login from './component/logIn/Login'
 import CheckOut from './component/logIn/CheckOut'
+import BuyHistory from './component/logIn/BuyHistory'
 import PrivateRoute from './firebaseAuth/PrivateRoute'
+import { FirebaseDatabaseProvider } from "@react-firebase/database";
 
 
 
 function App() {
+
+
   return (
     <AuthProvider>
       <CartContextProvider>
-        <Container className="App" fluid='true'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Login} />
-            <PrivateRoute path='/checkout' component={CheckOut} />
-
-          </Switch>
-        </Container>
+        <FirebaseDatabaseProvider>
+          <Container className="App" fluid='true'>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/signup' component={Login} />
+              <PrivateRoute exact path='/checkout' component={CheckOut} />
+              <PrivateRoute exact path='/history' component={BuyHistory} />
+            </Switch>
+          </Container>
+        </FirebaseDatabaseProvider>
       </CartContextProvider>
     </AuthProvider>
   );

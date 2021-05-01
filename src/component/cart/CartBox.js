@@ -20,12 +20,14 @@ export default function CartBox(props) {
             updatedCart[itemIndex] = updatedItem
         }
         setCartItem(updatedCart)
+
     }
 
 
     const cartList = cartItem.map(item => {
         return (
             <CartProduct
+                buttonClassName='m-1 visible'
                 key={item.id}
                 id={item.id}
                 image={item.imgUrl}

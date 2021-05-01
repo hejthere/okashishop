@@ -9,7 +9,7 @@
     text-shadow: 5px 5px rgb(134, 130, 130);
     opacity: 0;
     padding: 20px 20px;
-    font-size: 5rem;
+    font-size: 7vw;
     color: blanchedalmond;
     position: absolute;
     top: 50%;
@@ -58,15 +58,13 @@
 
 .section-container:hover>.section-picture {
     transform: translate(100%, 0);
-    transition: transform 2.5s;
+    transition: transform 1.5s;
     z-index: 10;
 }
 
 .section-container {
     border: white 2px solid;
     height: 35vh;
-    max-height: 300px;
-    max-width: 300px;
     background-color: #2E544A;
     position: relative;
     overflow: hidden;
@@ -75,7 +73,7 @@
 .section-hidden-text,
 .section-text {
     color: white;
-    font-size: 1.5rem;
+    font-size: 5vh;
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 4;
