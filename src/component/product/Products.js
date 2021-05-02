@@ -16,7 +16,7 @@ export default function Products() {
     const [displayItemArray, setDisplayItemArray] = useState([])
 
     const fetchDatabase = useCallback(async () => {
-        const response = await fetch('http://my-json-server.typicode.com/hejthere/picture/db');
+        const response = await fetch('https://my-json-server.typicode.com/hejthere/picture/db');
         const data = await response.json()
         setDatabase(data.arrayOfProducts || [])
     }, [])
