@@ -15,7 +15,11 @@ export default function Home() {
     const history = useHistory()
 
     const checkOutHandler = () => {
-        history.push('/checkout')
+        if (currentUser) {
+            history.push('/checkout')
+        } else {
+            history.push('/login')
+        }
     }
 
     const logOutHandler = () => {
