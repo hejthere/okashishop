@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/okashishop/static/css/main.6917eff5.chunk.css",
-    "main.js": "/okashishop/static/js/main.e678891c.chunk.js",
-    "main.js.map": "/okashishop/static/js/main.e678891c.chunk.js.map",
+    "main.js": "/okashishop/static/js/main.ccf27874.chunk.js",
+    "main.js.map": "/okashishop/static/js/main.ccf27874.chunk.js.map",
     "runtime-main.js": "/okashishop/static/js/runtime-main.6f9e6855.js",
     "runtime-main.js.map": "/okashishop/static/js/runtime-main.6f9e6855.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/okashishop/static/css/2.4c97ca4f.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.741026fd.chunk.js",
     "static/css/main.6917eff5.chunk.css",
-    "static/js/main.e678891c.chunk.js"
+    "static/js/main.ccf27874.chunk.js"
   ]
 }
