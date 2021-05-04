@@ -1,0 +1,41 @@
+.section-picture {
+    width: 50%;
+    min-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 10;
+    transform: translate(0, 0);
+    transition: transform 1.5s;
+}
+
+.section-container:hover>.section-picture {
+    transform: translate(100%, 0);
+    transition: transform 1.5s;
+    z-index: 10;
+}
+
+.section-container {
+    border: white 0.2rem solid;
+    height: 35vh;
+    background-color: #2E544A;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+}
+
+.section-hidden-text,
+.section-text {
+    color: white;
+    font-size: 1.5rem;
+    z-index: 4;
+    margin: auto;
+}
+
+.section-hidden-text-container,
+.section-text-container {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+}

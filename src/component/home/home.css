@@ -1,92 +1,47 @@
-.banner-container {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-}
-
-.banner-text {
-    background-color: rgb(0, 0, 0, 50%);
-    text-shadow: 5px 5px rgb(134, 130, 130);
-    opacity: 0;
-    padding: 20px 20px;
-    font-size: 7vw;
-    color: blanchedalmond;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: showUp 1.5s 1s;
-    animation-fill-mode: forwards;
-    z-index: 10;
-}
-
-@keyframes showUp {
-    from {
+    .banner-container {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .banner-text {
+        background-color: rgb(0, 0, 0, 50%);
+        text-shadow: 0.5rem 0.5rem rgb(134, 130, 130);
         opacity: 0;
+        padding: 2rem 2rem;
+        font-size: 4rem;
+        color: blanchedalmond;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: showUp 1.5s 1s;
+        animation-fill-mode: forwards;
+        z-index: 10;
     }
-    to {
-        opacity: 1;
+    
+    @keyframes showUp {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
-}
-
-@keyframes enlarge {
-    from {
-        transform: scale(1, 1)
+    
+    @keyframes enlarge {
+        from {
+            transform: scale(1, 1)
+        }
+        to {
+            transform: scale(1.15, 1.15);
+        }
     }
-    to {
-        transform: scale(1.15, 1.15);
+    
+    .banner-image {
+        animation: enlarge 6s 2s forwards;
+        transform: scale(1, 1);
+        width: 100%;
+        max-height: 100vh;
+        object-fit: cover;
     }
-}
-
-.banner-image {
-    animation: enlarge 6s 2s forwards;
-    transform: scale(1, 1);
-    width: 100%;
-    max-height: 100vh;
-    object-fit: cover;
-}
-
-.section-picture {
-    width: 50%;
-    min-height: 100%;
-    object-fit: cover;
-    position: absolute;
-    z-index: 10;
-    transform: translate(0, 0);
-    transition: transform 1.5s;
-}
-
-.section-container:hover>.section-picture {
-    transform: translate(100%, 0);
-    transition: transform 1.5s;
-    z-index: 10;
-}
-
-.section-container {
-    border: white 2px solid;
-    height: 35vh;
-    background-color: #2E544A;
-    position: relative;
-    overflow: hidden;
-}
-
-.section-hidden-text,
-.section-text {
-    color: white;
-    font-size: 5vh;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    z-index: 4;
-}
-
-.section-hidden-text {
-    width: 250px;
-    overflow: visible;
-    top: 50%;
-    left: 30%;
-}
-
-.section-text {
-    top: 50%;
-    left: 80%;
-}
