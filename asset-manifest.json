@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/okashishop/static/css/main.6917eff5.chunk.css",
-    "main.js": "/okashishop/static/js/main.ccf27874.chunk.js",
-    "main.js.map": "/okashishop/static/js/main.ccf27874.chunk.js.map",
-    "runtime-main.js": "/okashishop/static/js/runtime-main.6f9e6855.js",
-    "runtime-main.js.map": "/okashishop/static/js/runtime-main.6f9e6855.js.map",
+    "main.css": "/okashishop/static/css/main.8137288b.chunk.css",
+    "main.js": "/okashishop/static/js/main.c5814636.chunk.js",
+    "main.js.map": "/okashishop/static/js/main.c5814636.chunk.js.map",
+    "runtime-main.js": "/okashishop/static/js/runtime-main.c4942374.js",
+    "runtime-main.js.map": "/okashishop/static/js/runtime-main.c4942374.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/okashishop/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.741026fd.chunk.js": "/okashishop/static/js/2.741026fd.chunk.js",
-    "static/js/2.741026fd.chunk.js.map": "/okashishop/static/js/2.741026fd.chunk.js.map",
-    "static/js/3.181d06d6.chunk.js": "/okashishop/static/js/3.181d06d6.chunk.js",
-    "static/js/3.181d06d6.chunk.js.map": "/okashishop/static/js/3.181d06d6.chunk.js.map",
+    "static/js/2.e2ea260d.chunk.js": "/okashishop/static/js/2.e2ea260d.chunk.js",
+    "static/js/2.e2ea260d.chunk.js.map": "/okashishop/static/js/2.e2ea260d.chunk.js.map",
+    "static/js/3.efd53719.chunk.js": "/okashishop/static/js/3.efd53719.chunk.js",
+    "static/js/3.efd53719.chunk.js.map": "/okashishop/static/js/3.efd53719.chunk.js.map",
     "index.html": "/okashishop/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/okashishop/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.6917eff5.chunk.css.map": "/okashishop/static/css/main.6917eff5.chunk.css.map",
-    "static/js/2.741026fd.chunk.js.LICENSE.txt": "/okashishop/static/js/2.741026fd.chunk.js.LICENSE.txt",
+    "static/css/main.8137288b.chunk.css.map": "/okashishop/static/css/main.8137288b.chunk.css.map",
+    "static/js/2.e2ea260d.chunk.js.LICENSE.txt": "/okashishop/static/js/2.e2ea260d.chunk.js.LICENSE.txt",
     "static/media/macha.171402b6.jpg": "/okashishop/static/media/macha.171402b6.jpg",
     "static/media/ocha.dd694839.jpg": "/okashishop/static/media/ocha.dd694839.jpg",
     "static/media/osara.d2d3cf21.jpg": "/okashishop/static/media/osara.d2d3cf21.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.6f9e6855.js",
+    "static/js/runtime-main.c4942374.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.741026fd.chunk.js",
-    "static/css/main.6917eff5.chunk.css",
-    "static/js/main.ccf27874.chunk.js"
+    "static/js/2.e2ea260d.chunk.js",
+    "static/css/main.8137288b.chunk.css",
+    "static/js/main.c5814636.chunk.js"
   ]
 }
