@@ -68,6 +68,7 @@ export default function Products() {
         } else {
             setDisplayItemArray(database)
         }
+        searchRef.current.value = ''
     }
 
     const sortHandler = (e) => {
@@ -90,6 +91,11 @@ export default function Products() {
         setDisplayItemArray(newSortArray);
     }
 
+    const resetHandler = () => {
+        setDisplayItemArray(database);
+        searchRef.current.value = ''
+    }
+
     return (
         <Container fluid='true' className='overflow-hidden'>
             <Row xs={1} sm={1} md lg xl={2}>
@@ -97,7 +103,7 @@ export default function Products() {
                 <Col><SearchBox
                     forwardedRef={searchRef}
                     searchHandler={searchHandler}
-                    resetHandler={() => { setDisplayItemArray(database) }, () => { searchRef.current.value = '' }}
+                    resetHandler={resetHandler}
                     sortHandlerHigh={() => sortHandler(true)}
                     sortHandlerLow={() => sortHandler(false)}
                     sortHandler={sortHandler}
