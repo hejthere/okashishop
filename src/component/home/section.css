@@ -16,11 +16,35 @@
 
 .section-container {
     border: white 0.2rem solid;
-    height: 35vh;
+    height: max(20vh, 150px);
     background-color: #2E544A;
     position: relative;
     overflow: hidden;
     display: flex;
+}
+
+@media (min-width: 576px) {
+    .section-container {
+        height: max(22vh, 170px);
+    }
+}
+
+@media (min-width: 768px) {
+    .section-container {
+        height: max(24vh, 180px);
+    }
+}
+
+@media (min-width: 992px) {
+    .section-container {
+        height: max(27vh, 200px);
+    }
+}
+
+@media (min-width: 1200px) {
+    .section-container {
+        height: max(30vh, 230px);
+    }
 }
 
 .section-hidden-text,
