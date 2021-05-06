@@ -1,16 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Button } from 'react-bootstrap'
 import { useAuth } from '../../firebaseAuth/AuthContext'
 import CartProduct from '../cart/CartProduct';
 import { CartContext } from '../../CartContext'
 import { database } from '../../firebaseAuth/firebase'
+import { useHistory } from 'react-router-dom'
 
 
 export default function BuyHistory() {
     const [cartItem] = useContext(CartContext);
     const [cartHistory, setCartHistory] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { currentUser } = useAuth()
+    const { currentUser } = useAuth();
+    const history = useHistory();
 
     useEffect(() => {
         const userInfo = database.ref('user/' + currentUser.uid);
@@ -54,6 +56,8 @@ export default function BuyHistory() {
         <Container>
             <h1>Order History</h1>
             {!loading && cartHistoryList}
+            <div className='w-100 mb-3 d-flex justify-content-end'>
+                <Button variant='info' onClick={() => history.goBack()}>Back</Button></div>
         </Container>
 
 
