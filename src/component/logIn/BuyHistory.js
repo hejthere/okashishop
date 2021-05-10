@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Button } from 'react-bootstrap'
 import { useAuth } from '../../firebaseAuth/AuthContext'
 import CartProduct from '../cart/CartProduct';
-import { CartContext } from '../../CartContext'
 import { database } from '../../firebaseAuth/firebase'
 import { useHistory } from 'react-router-dom'
 
 
 export default function BuyHistory() {
-    const [cartItem] = useContext(CartContext);
     const [cartHistory, setCartHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const { currentUser } = useAuth();
@@ -26,7 +24,8 @@ export default function BuyHistory() {
     const cartHistoryArray = Object.keys(cartHistory || {}).map(item => cartHistory[item])
     const cartHistoryList = cartHistoryArray.map(buyHistory => {
         return (
-            <Container className='m-5'>
+            <Container className='m-5'
+                key={buyHistory.date}>
                 <div>{new Date(buyHistory.date).toUTCString()}</div>
                 {buyHistory.cartItem.map(item => {
                     return (
@@ -43,7 +42,7 @@ export default function BuyHistory() {
                 })}
                 <h4 className='w-100 d-flex justify-content-end'>
                     Total Price: HK$
-                    {cartItem.length < 2 ? cartItem[0].price : (cartItem.reduce((a, b) => {
+                    {buyHistory.cartItem.length < 2 ? buyHistory.cartItem[0].price : (buyHistory.cartItem.reduce((a, b) => {
                     return (a.quantity * a.price) + (b.quantity * b.price)
                 }))}
                 </h4>
@@ -57,7 +56,7 @@ export default function BuyHistory() {
             <h1>Order History</h1>
             {!loading && cartHistoryList}
             <div className='w-100 mb-3 d-flex justify-content-end'>
-                <Button variant='info' onClick={() => history.goBack()}>Back</Button></div>
+                <Button variant='info' onClick={() => history.push('/')}>Back</Button></div>
         </Container>
 
 

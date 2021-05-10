@@ -5,8 +5,6 @@ import Product from './Product';
 import { CartContext } from '../../CartContext'
 import SearchBox from './SearchBox'
 
-
-
 export default function Products() {
 
     const [cartItem, setCartItem] = useContext(CartContext)
@@ -20,9 +18,11 @@ export default function Products() {
         const data = await response.json()
         setDatabase(data.arrayOfProducts || [])
     }, [])
+
     useEffect(() => {
         fetchDatabase();
     }, [fetchDatabase])
+
     useEffect(() => {
         setDisplayItemArray(database)
     }, [database])
@@ -31,14 +31,11 @@ export default function Products() {
     const addToCartHandler = (e) => {
         let addedItem = database.find(item => item.id === e.target.id)
         let isExisted = cartItem.find(item => item.id === addedItem.id)
-        if (!isExisted) {
-            setCartItem([...cartItem, addedItem])
-        }
+        if (!isExisted) { setCartItem([...cartItem, addedItem]) }
         else {
             let itemIndex = cartItem.indexOf(addedItem)
             let updatedCart = [...cartItem]
-            let updatedItem = { ...addedItem, quantity: addedItem.quantity + 1 }
-            updatedCart[itemIndex] = updatedItem
+            updatedCart[itemIndex] = { ...addedItem, quantity: addedItem.quantity + 1 }
             setCartItem(updatedCart)
         }
         alert('Added to Cart')
@@ -47,9 +44,9 @@ export default function Products() {
 
     let machaItem = displayItemArray.map(item => {
         return (
-            <Col className='py-3 px-0'>
+            <Col className='py-3 px-0'
+                key={item.id}>
                 <Product
-                    key={item.id}
                     id={item.id}
                     picture={item.imgUrl}
                     name={item.name}
@@ -61,9 +58,7 @@ export default function Products() {
     const searchHandler = () => {
         const searchValue = searchRef.current.value
         if (searchValue.trim() !== "" | searchValue.length !== 0) {
-            const filteredItem = database.filter(item => {
-                return item.name.toUpperCase().includes(searchValue.toUpperCase())
-            })
+            const filteredItem = database.filter(item => item.name.toUpperCase().includes(searchValue.toUpperCase()))
             setDisplayItemArray(filteredItem)
         } else {
             setDisplayItemArray(database)
@@ -75,19 +70,10 @@ export default function Products() {
         setSelectValue(e.target.value)
         const newSortArray = [...database]
         if (selectValue === 'fromHightToLow') {
-            newSortArray.sort((a, b) => {
-                return (
-                    ((a.price > b.price) ? 1 : -1)
-                )
-            })
+            newSortArray.sort((a, b) => ((a.price > b.price) ? 1 : -1))
         } else {
-            newSortArray.sort((a, b) => {
-                return (
-                    ((a.price > b.price) ? -1 : 1)
-                )
-            })
+            newSortArray.sort((a, b) => ((a.price > b.price) ? -1 : 1))
         }
-
         setDisplayItemArray(newSortArray);
     }
 
@@ -100,15 +86,16 @@ export default function Products() {
         <Container fluid='true' className='overflow-hidden'>
             <Row xs={1} sm={1} md lg xl={2}>
                 <Col><h2 className='pt-3'> Feature Items: </h2></Col>
-                <Col><SearchBox
-                    forwardedRef={searchRef}
-                    searchHandler={searchHandler}
-                    resetHandler={resetHandler}
-                    sortHandlerHigh={() => sortHandler(true)}
-                    sortHandlerLow={() => sortHandler(false)}
-                    sortHandler={sortHandler}
-                    value={selectValue}
-                />
+                <Col>
+                    <SearchBox
+                        forwardedRef={searchRef}
+                        searchHandler={searchHandler}
+                        resetHandler={resetHandler}
+                        sortHandlerHigh={() => sortHandler(true)}
+                        sortHandlerLow={() => sortHandler(false)}
+                        sortHandler={sortHandler}
+                        value={selectValue}
+                    />
                 </Col>
             </Row>
 

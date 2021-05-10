@@ -11,7 +11,6 @@ export default function Login() {
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
     const history = useHistory()
-
     const { signUp, login } = useAuth()
     const [error, setError] = useState()
     const [isLogin, setIsLogin] = useState(true)
@@ -44,9 +43,7 @@ export default function Login() {
         }
     ]
 
-    const loginContent = formContent.filter(el => {
-        return el.id !== "confirmPassword";
-    })
+    const loginContent = formContent.filter(el => el.id !== "confirmPassword")
 
     let displayForm = [];
     displayForm = (isLogin ? loginContent : formContent).map(el => {
@@ -61,9 +58,7 @@ export default function Login() {
     //Switch Page 
 
     useEffect(() => {
-        if (location.pathname === '/signup') {
-            setIsLogin(false)
-        }
+        if (location.pathname === '/signup') { setIsLogin(false) }
     }, [location]);
 
     const switchPageHandler = () => {
@@ -86,10 +81,7 @@ export default function Login() {
 
     async function submitSignUp(e) {
         e.preventDefault()
-
-        if (passwordRef.current.value !== confirmPasswordRef.current.value) {
-            return setError('Password does not match!')
-        }
+        if (passwordRef.current.value !== confirmPasswordRef.current.value) return setError('Password does not match!')
         try {
             setError('')
             await signUp(emailRef.current.value, passwordRef.current.value)

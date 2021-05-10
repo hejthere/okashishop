@@ -14,9 +14,8 @@ export default function NavBar(props) {
                 <Nav className="mr-auto">
                     <Nav.Link eventKey={2} onClick={props.cartButton}>
                         Cart
-               </Nav.Link>
+                    </Nav.Link>
                     <Nav.Link onClick={props.logOutHandler}>{props.logOutText}</Nav.Link>
-
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

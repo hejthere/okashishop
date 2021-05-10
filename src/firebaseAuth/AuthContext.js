@@ -13,6 +13,7 @@ export function useAuth() {
 export function AuthProvider({ children }) {
 
     const [currentUser, setCurrentUser] = useState()
+    const [loading, setLoading] = useState(true)
 
     async function signUp(email, password) {
         try {
@@ -35,8 +36,6 @@ export function AuthProvider({ children }) {
         }
     }
 
-
-
     async function updateCartHistory(userId, info, date) {
         try {
             const userInfo = database.ref('user/' + userId + `/${Date.now()}`);
@@ -50,8 +49,6 @@ export function AuthProvider({ children }) {
             alert(error);
         }
     }
-
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const unsubscribe =

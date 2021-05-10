@@ -6,7 +6,7 @@ import './section.css';
 
 export default function Section() {
 
-    const productList = [
+    const sectionListContent = [
         {
             picture: tea,
             description: 'Looking for tea leaf?',
@@ -19,12 +19,16 @@ export default function Section() {
         }
     ]
 
-    const productItem = productList.map(item => {
+    const productItem = sectionListContent.map(item => {
         return (
             <Col key={item.description} className='p-0 section-container'>
-                <div className="section-hidden-text-container"> <div className="section-hidden-text">{item.hiddenText}</div></div>
+                <div className="section-hidden-text-container">
+                    <div className="section-hidden-text">{item.hiddenText}</div>
+                </div>
                 <Image className='section-picture' src={item.picture} fluid='true' />
-                <div className="section-text-container"><div className="section-text">{item.description}</div></div>
+                <div className="section-text-container">
+                    <div className="section-text">{item.description}</div>
+                </div>
 
             </Col>
         )

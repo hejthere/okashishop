@@ -13,30 +13,22 @@ import { useHistory } from 'react-router-dom'
 export default function Home() {
     const { currentUser, signOut } = useAuth()
     const history = useHistory()
-
-    const checkOutHandler = () => {
-        if (currentUser) {
-            history.push('/checkout')
-        } else {
-            history.push('/login')
-        }
-    }
-
-    const logOutHandler = () => {
-        if (currentUser) {
-            signOut();
-            alert('You are logged out.')
-        } else {
-            history.push('/login')
-        }
-    }
-
     const [showCart, setShowCart] = useState(false);
 
+    const checkOutHandler = () => {
+        if (!currentUser) return history.push('/login')
+        history.push('/checkout')
+    }
+
+    const LoginAndOutHandler = () => {
+        if (!currentUser) return history.push('/login')
+        signOut();
+        alert('You are logged out.')
+    }
 
     return (
         <Container fluid='true'>
-            <NavBar logOutHandler={logOutHandler}
+            <NavBar logOutHandler={LoginAndOutHandler}
                 logOutText={currentUser ? 'Log Out' : 'Log In'}
                 cartButton={() => setShowCart(true)} />
             <Banner backgrounds={macha} />

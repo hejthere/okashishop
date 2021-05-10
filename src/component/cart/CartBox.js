@@ -10,17 +10,15 @@ export default function CartBox(props) {
         localStorage.setItem('cartItem', JSON.stringify(cartItem))
     }, [cartItem])
 
-    const quantityHandler = (e, isAdded) => {
+    const quantityHandler = (e, isAddedOne) => {
         const addedItem = cartItem.find(item => item.id === e.target.id)
         const itemIndex = cartItem.indexOf(addedItem)
         let updatedCart = [...cartItem]
-        if (!isAdded && addedItem.quantity === 1) { updatedCart.splice(itemIndex, 1) } else {
-            const itemIndex = cartItem.indexOf(addedItem)
-            let updatedItem = { ...addedItem, quantity: isAdded ? addedItem.quantity + 1 : addedItem.quantity - 1 }
-            updatedCart[itemIndex] = updatedItem
+        if (!isAddedOne && addedItem.quantity === 1) { updatedCart.splice(itemIndex, 1) }
+        else {
+            updatedCart[itemIndex] = { ...addedItem, quantity: isAddedOne ? addedItem.quantity + 1 : addedItem.quantity - 1 }
         }
         setCartItem(updatedCart)
-
     }
 
 
@@ -37,12 +35,12 @@ export default function CartBox(props) {
                 addOne={(e) => quantityHandler(e, true)}
                 minusOne={(e) => quantityHandler(e, false)}
                 totalPrice={item.quantity * item.price} />
-
         )
     })
 
     return (
         <Modal
+            animation={false}
             size='lg'
             show={props.show}
             onHide={props.onHide}

@@ -17,7 +17,6 @@ export default function CheckOut() {
 
 
     function sendConfirmation() {
-
         updateCartHistory(currentUser.uid, {
             name: nameRef.current.value,
             address: addressRef.current.value,
@@ -85,14 +84,11 @@ export default function CheckOut() {
             {cartItem.length < 2 ? cartItem[0].price : (cartItem.reduce((a, b) => {
                 return (a.quantity * a.price) + (b.quantity * b.price)
             }))}
-
             </h4>
             <div className='w-100 d-flex justify-content-end my-3'>
                 <Button variant='info' className='mx-1' onClick={sendConfirmation}>Confirm</Button>
                 <Button variant='danger' className='mx-1' onClick={() => history.goBack()}>Back</Button>
             </div>
         </Container>
-
-
     )
 }
