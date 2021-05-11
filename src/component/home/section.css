@@ -1,65 +1,73 @@
-.section-picture {
-    width: 50%;
-    min-height: 100%;
-    object-fit: cover;
-    position: absolute;
-    z-index: 10;
-    transform: translate(0, 0);
-    transition: transform 1.5s;
-}
-
-.section-container:hover>.section-picture {
-    transform: translate(100%, 0);
-    transition: transform 1.5s;
-    z-index: 10;
-}
-
-.section-container {
-    border: white 0.2rem solid;
-    height: max(20vh, 150px);
-    background-color: #2E544A;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-}
-
-@media (min-width: 576px) {
-    .section-container {
-        height: max(22vh, 170px);
-    }
-}
-
-@media (min-width: 768px) {
-    .section-container {
-        height: max(24vh, 180px);
-    }
-}
-
-@media (min-width: 992px) {
-    .section-container {
-        height: max(27vh, 200px);
-    }
-}
-
-@media (min-width: 1200px) {
-    .section-container {
-        height: max(30vh, 230px);
-    }
-}
-
-.section-hidden-text,
-.section-text {
-    color: white;
-    font-size: 1.5rem;
-    z-index: 4;
-    margin: auto;
-}
-
-.section-hidden-text-container,
-.section-text-container {
-    flex: 0 0 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.1rem;
-}
+ .section-picture {
+     width: 50%;
+     min-height: 100%;
+     object-fit: cover;
+     position: absolute;
+     z-index: 10;
+     transform: translate(0, 0);
+     transition: transform 1.5s;
+ }
+ 
+ .section-container {
+     border: white 0.2rem solid;
+     height: max(20vh, 150px);
+     background-color: #2E544A;
+     position: relative;
+     overflow: hidden;
+     display: flex;
+ }
+ 
+ .slide-animation {
+     transform: translate(100%, 0);
+     transition: transform 1.5s;
+     z-index: 10;
+ }
+ 
+ @media (hover:hover) {
+     .section-container:hover>.section-picture {
+         transform: translate(100%, 0);
+         transition: transform 1.5s;
+         z-index: 10;
+     }
+ }
+ 
+ @media (min-width: 576px) {
+     .section-container {
+         height: max(22vh, 170px);
+     }
+ }
+ 
+ @media (min-width: 768px) {
+     .section-container {
+         height: max(24vh, 180px);
+     }
+ }
+ 
+ @media (min-width: 992px) {
+     .section-container {
+         height: max(27vh, 200px);
+     }
+ }
+ 
+ @media (min-width: 1200px) {
+     .section-container {
+         height: max(30vh, 230px);
+     }
+ }
+ 
+ .section-hidden-text,
+ .section-text {
+     color: white;
+     font-size: 1.5rem;
+     z-index: 4;
+     margin: auto;
+ }
+ 
+ .section-hidden-text-container,
+ .section-text-container {
+     flex: 0 0 50%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding: 0.1rem;
+ }

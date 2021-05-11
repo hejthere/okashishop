@@ -6,13 +6,22 @@ import './section.css';
 
 export default function Section() {
 
+    //supplement hover effect for mobile devices  
+    const slideHandler = (id) => {
+        const picture = document.getElementById(id);
+        console.log(picture)
+        picture.classList.toggle("slide-animation");
+    }
+
     const sectionListContent = [
         {
+            id: 'tea',
             picture: tea,
             description: 'Looking for tea leaf?',
             hiddenText: "Order with us!"
         },
         {
+            id: 'dishes',
             picture: dishes,
             description: 'Join our event!',
             hiddenText: 'Coming soon!'
@@ -21,11 +30,12 @@ export default function Section() {
 
     const productItem = sectionListContent.map(item => {
         return (
-            <Col key={item.description} className='p-0 section-container'>
+            <Col key={item.description} onClick={() => slideHandler(item.id)} className='p-0 section-container'>
                 <div className="section-hidden-text-container">
+
                     <div className="section-hidden-text">{item.hiddenText}</div>
                 </div>
-                <Image className='section-picture' src={item.picture} fluid='true' />
+                <Image id={item.id} className='section-picture' src={item.picture} fluid='true' />
                 <div className="section-text-container">
                     <div className="section-text">{item.description}</div>
                 </div>

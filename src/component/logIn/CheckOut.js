@@ -9,7 +9,7 @@ import { CartContext } from '../../CartContext'
 
 export default function CheckOut() {
 
-    const [cartItem] = useContext(CartContext);
+    const [cartItem, setCartItem] = useContext(CartContext);
     const { updateCartHistory, currentUser } = useAuth()
     const nameRef = useRef()
     const addressRef = useRef()
@@ -23,7 +23,8 @@ export default function CheckOut() {
             cartItem: cartItem
         }, Date.now()).then(
             alert('Your order has been received!'),
-            history.push('/history')
+            history.push('/history'),
+            setCartItem([])
         ).catch(error => alert(error))
 
     }

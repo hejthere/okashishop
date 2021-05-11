@@ -72,7 +72,7 @@ export default function Login() {
         e.preventDefault()
         try {
             await login(emailRef.current.value, passwordRef.current.value)
-            history.push('/')
+            history.goBack()
         }
         catch {
             setError('Fail to log in')
@@ -85,7 +85,7 @@ export default function Login() {
         try {
             setError('')
             await signUp(emailRef.current.value, passwordRef.current.value)
-            history.push('/home')
+            history.goBack()
         }
         catch {
             setError('Failed to create account!')
