@@ -52,7 +52,7 @@ export default function BuyHistory() {
     });
 
     return (
-        <Container>
+        <Container fluid="true">
             <h1>Order History</h1>
             {!loading && cartHistoryList}
             <div className='w-100 mb-3 d-flex justify-content-end'>
