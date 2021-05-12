@@ -74,7 +74,7 @@ export default function CheckOut() {
     })
 
     return (
-        <Container>
+        <Container fluid="true">
             <h2>Order Detail</h2>
             {contactForm}
             <hr />
