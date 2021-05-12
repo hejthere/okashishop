@@ -94,7 +94,7 @@ export default function Login() {
 
 
     return (
-        <Container className='login-container'>
+        <Container className='login-container' fluid="true">
             <Row fluid="true">
                 <Col>
                     <div className='w-100' style={{ maxWidth: '700px' }}>
