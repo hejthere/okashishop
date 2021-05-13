@@ -3,7 +3,7 @@
 A responsive web application built with React JS for people to shop online.
 
 ## Project preview
-
+![alt text](https://github.com/hejthere/picture/blob/main/preview_gif.gif?raw=true)
 
 ## Features
 
