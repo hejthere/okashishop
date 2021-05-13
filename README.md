@@ -1,6 +1,6 @@
-# Shopping Website - Okashi Shop
+# Shopping Wep application - Okashi Shop
 
-A web application built with React JS for people to shop online.
+A responsive web application built with React JS for people to shop online.
 
 ## Project preview
 
