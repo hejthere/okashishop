@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/okashishop/static/css/main.cdd110a7.chunk.css",
+    "main.css": "/okashishop/static/css/main.48131b19.chunk.css",
     "main.js": "/okashishop/static/js/main.7332fd50.chunk.js",
     "main.js.map": "/okashishop/static/js/main.7332fd50.chunk.js.map",
     "runtime-main.js": "/okashishop/static/js/runtime-main.ef53da80.js",
@@ -10,7 +10,7 @@
     "static/js/2.50e707ec.chunk.js.map": "/okashishop/static/js/2.50e707ec.chunk.js.map",
     "index.html": "/okashishop/index.html",
     "static/css/2.d6008dad.chunk.css.map": "/okashishop/static/css/2.d6008dad.chunk.css.map",
-    "static/css/main.cdd110a7.chunk.css.map": "/okashishop/static/css/main.cdd110a7.chunk.css.map",
+    "static/css/main.48131b19.chunk.css.map": "/okashishop/static/css/main.48131b19.chunk.css.map",
     "static/js/2.50e707ec.chunk.js.LICENSE.txt": "/okashishop/static/js/2.50e707ec.chunk.js.LICENSE.txt",
     "static/media/door.8492e619.jpg": "/okashishop/static/media/door.8492e619.jpg",
     "static/media/footer.433c862d.png": "/okashishop/static/media/footer.433c862d.png",
@@ -25,7 +25,7 @@
     "static/js/runtime-main.ef53da80.js",
     "static/css/2.d6008dad.chunk.css",
     "static/js/2.50e707ec.chunk.js",
-    "static/css/main.cdd110a7.chunk.css",
+    "static/css/main.48131b19.chunk.css",
     "static/js/main.7332fd50.chunk.js"
   ]
 }
