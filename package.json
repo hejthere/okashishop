@@ -1,6 +1,7 @@
 {
   "name": "okashishop",
   "version": "0.1.0",
+  "homepage": "https://hejthere.github.io/okashishop/",
   "private": true,
   "dependencies": {
     "@react-firebase/auth": "0.2.10",
