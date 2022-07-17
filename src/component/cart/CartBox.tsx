@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, MouseEvent } from "react";
+import React, { useContext, useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
 import { CartContext } from "../../CartContext";
 import { Product } from "../../Modal";
@@ -11,29 +11,29 @@ interface Props {
 }
 
 export default function CartBox(props: Props) {
-  //@ts-ignore
   const { cartItem, setCartItem } = useContext(CartContext);
 
   useEffect(() => {
     localStorage.setItem("cartItem", JSON.stringify(cartItem ?? ""));
   }, [cartItem]);
 
-  // const quantityHandler = (e: MouseEvent<HTMLElement>, isAddedOne: boolean) => {
-  //   const addedItem = cartItem?.find(
-  //     (item: Product) => item.id === e.currentTarget.id
-  //   );
-  //   const itemIndex = cartItem?.indexOf(addedItem);
-  //   let updatedCart = [...(cartItem ?? [])];
-  //   if (!isAddedOne && addedItem.quantity === 1) {
-  //     updatedCart.splice(itemIndex, 1);
-  //   } else {
-  //     updatedCart[itemIndex] = {
-  //       ...addedItem,
-  //       quantity: isAddedOne ? addedItem.quantity + 1 : addedItem.quantity - 1,
-  //     };
-  //   }
-  //   setCartItem(updatedCart);
-  // };
+  const quantityHandler = (id: string, isAddedOne: boolean) => {
+    const itemIndex = cartItem?.findIndex((item: Product) => item.id === id);
+    if (cartItem && itemIndex !== undefined) {
+      let updatedCart = [...cartItem];
+      if (!isAddedOne && cartItem[itemIndex].quantity === 1) {
+        updatedCart.splice(itemIndex, 1);
+      } else {
+        updatedCart[itemIndex] = {
+          ...cartItem[itemIndex],
+          quantity: isAddedOne
+            ? cartItem[itemIndex].quantity + 1
+            : cartItem[itemIndex].quantity - 1,
+        };
+      }
+      setCartItem(updatedCart);
+    }
+  };
 
   const cartList = cartItem?.map((item: Product) => {
     return (
@@ -45,8 +45,8 @@ export default function CartBox(props: Props) {
         name={item.name}
         price={item.price}
         quantity={item.quantity}
-        // addOne={(e) => quantityHandler(e, true)}
-        // minusOne={(e) => quantityHandler(e, false)}
+        addOne={(id) => quantityHandler(id, true)}
+        minusOne={(id) => quantityHandler(id, false)}
         totalPrice={item.quantity * item.price}
       />
     );

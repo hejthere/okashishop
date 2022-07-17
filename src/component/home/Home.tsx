@@ -8,14 +8,14 @@ import Section from "./Section";
 import CartBox from "../cart/CartBox";
 import { useAuth } from "../../firebaseAuth/AuthContext";
 import { useHistory } from "react-router-dom";
-import { Parallax } from "react-scroll-parallax";
+// import { Parallax } from "react-scroll-parallax";
 import useWindowDimensions from "../../hook/dimension";
 
 //images
-import door from "../../pictures/door.jpg";
-import ground from "../../pictures/footer.png";
-import shockedCharacter from "../../pictures/shockobaachan.png";
-import character from "../../pictures/obaachan.png";
+// import door from "../../pictures/door.jpg";
+// import ground from "../../pictures/footer.png";
+// import shockedCharacter from "../../pictures/shockobaachan.png";
+// import character from "../../pictures/obaachan.png";
 
 export default function Home() {
   //@ts-ignore
@@ -46,7 +46,7 @@ export default function Home() {
         />
         <Banner backgrounds={macha} />
       </div>
-      <div className="scroll-effect-container p-0 m-0">
+      {/* <div className="scroll-effect-container p-0 m-0">
         <div className="roof" />
         <Row
           className="door-container  p-0 m-0"
@@ -81,7 +81,7 @@ export default function Home() {
           </Col>
         </Row>
         <Image src={ground} className="floor" />
-      </div>
+      </div> */}
       <Section />
       <Products />
       <CartBox

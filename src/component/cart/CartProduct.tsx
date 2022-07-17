@@ -1,4 +1,4 @@
-import React, { MouseEvent } from "react";
+import React from "react";
 import { Button, Row, Col, Image } from "react-bootstrap";
 import "./cart.css";
 
@@ -9,42 +9,56 @@ interface Props {
   price: number;
   quantity: number;
   totalPrice: number;
-  addOne?: (e: MouseEvent<HTMLElement>) => void;
-  minusOne?: (e: MouseEvent<HTMLElement>) => void;
+  addOne?: (id: string) => void;
+  minusOne?: (id: string) => void;
   buttonClassName: string;
 }
 
-export default function CartProduct(props: Props) {
+export default function CartProduct({
+  id,
+  image,
+  name,
+  price,
+  quantity,
+  totalPrice,
+  addOne,
+  minusOne,
+  buttonClassName,
+}: Props) {
   return (
     <Row>
       <Col>
-        <Image src={props.image} className="cartItem-image" />
-        <div>{props.name}</div>
-        <div>HK${props.price}</div>
+        <Image src={image} className="cartItem-image" />
+        <div>{name}</div>
+        <div>HK${price}</div>
       </Col>
       <Col>
-        <div>Quantity: {props.quantity}</div>
+        <div>Quantity: {quantity}</div>
         <Button
           variant="outline-info"
-          id={props.id}
-          onClick={props.addOne}
-          className={props.buttonClassName}
+          id={id}
+          onClick={() => {
+            addOne && addOne(id);
+          }}
+          className={buttonClassName}
         >
           {" "}
           +{" "}
         </Button>
         <Button
           variant="outline-info"
-          id={props.id}
-          onClick={props.minusOne}
-          className={props.buttonClassName}
+          id={id}
+          onClick={() => {
+            minusOne && minusOne(id);
+          }}
+          className={buttonClassName}
         >
           {" "}
           -{" "}
         </Button>
       </Col>
       <Col>
-        <div>Total Price: HK${props.totalPrice}</div>
+        <div>Total Price: HK${totalPrice}</div>
       </Col>
     </Row>
   );

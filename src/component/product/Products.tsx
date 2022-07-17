@@ -4,6 +4,7 @@ import React, {
   useRef,
   useEffect,
   useCallback,
+  EventHandler,
 } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./product.css";
@@ -35,34 +36,35 @@ export default function Products() {
     setDisplayItemArray(database);
   }, [database]);
 
-  //   const addToCartHandler = (e) => {
-  //     let addedItem = database.indexOf((item) => item.id === e.target.id);
-  //     let isExisted =
-  //       (cartItem ?? []).find((item) => item?.id === addedItem?.id);
-  //     if (!isExisted) {
-  //       setCartItem([...(cartItem || []), addedItem]);
-  //     } else {
-  //       let itemIndex = cartItem?.indexOf(addedItem);
-  //       let updatedCart = [...cartItem];
-  //       updatedCart[itemIndex] = {
-  //         ...addedItem,
-  //         quantity: addedItem.quantity + 1,
-  //       };
-  //       setCartItem(updatedCart);
-  //     }
-  //     alert("Added to Cart");
-  //   };
+  const addToCartHandler = (id: string) => {
+    let addedItem = database.find((item) => item.id === id);
+    let addedItemIndexInCart = (cartItem ?? []).findIndex(
+      (item: Product) => item?.id === id
+    );
+    if (addedItem) {
+      if (addedItemIndexInCart === -1) {
+        setCartItem([...(cartItem || []), addedItem]);
+      } else {
+        let updatedCart = [...(cartItem || [])];
+        updatedCart[addedItemIndexInCart] = {
+          ...addedItem,
+          quantity: addedItem.quantity + 1,
+        };
+        setCartItem(updatedCart);
+      }
+      alert("Added to Cart");
+    }
+  };
 
   let machaItem = displayItemArray.map((item: Product) => {
     return (
       <Col className="py-3 px-0" key={item.id}>
         <ProductBox
           id={item.id}
-          //@ts-ignore
           imgUrl={item.imgUrl}
           name={item.name}
           price={item.price}
-          addToCartHandler={() => {}}
+          addToCartHandler={(e) => addToCartHandler(e)}
           quantity={item.quantity}
         />
       </Col>
