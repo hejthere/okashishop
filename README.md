@@ -8,7 +8,8 @@ This project was built using these technologies:
 * JavaScript 
 * React JS
 * Bootstrap 
-* Node.js 
+* Firebase
+
 
 ## Project preview
 ![alt text](https://github.com/hejthere/picture/blob/main/preview_gif.gif?raw=true)
