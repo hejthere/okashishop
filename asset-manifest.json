@@ -1,31 +1,17 @@
 {
   "files": {
-    "main.css": "/okashishop/static/css/main.48131b19.chunk.css",
-    "main.js": "/okashishop/static/js/main.7332fd50.chunk.js",
-    "main.js.map": "/okashishop/static/js/main.7332fd50.chunk.js.map",
-    "runtime-main.js": "/okashishop/static/js/runtime-main.ef53da80.js",
-    "runtime-main.js.map": "/okashishop/static/js/runtime-main.ef53da80.js.map",
-    "static/css/2.d6008dad.chunk.css": "/okashishop/static/css/2.d6008dad.chunk.css",
-    "static/js/2.50e707ec.chunk.js": "/okashishop/static/js/2.50e707ec.chunk.js",
-    "static/js/2.50e707ec.chunk.js.map": "/okashishop/static/js/2.50e707ec.chunk.js.map",
+    "main.css": "/okashishop/static/css/main.0395e330.css",
+    "main.js": "/okashishop/static/js/main.a0a016c5.js",
+    "static/media/macha.jpg": "/okashishop/static/media/macha.171402b60383055b44d5.jpg",
+    "static/media/login-bg.jpg": "/okashishop/static/media/login-bg.5d935eead75cbfee0c8f.jpg",
+    "static/media/osara.jpg": "/okashishop/static/media/osara.d2d3cf21a15bd8733352.jpg",
+    "static/media/ocha.jpg": "/okashishop/static/media/ocha.dd694839a66ea6ef0b8b.jpg",
     "index.html": "/okashishop/index.html",
-    "static/css/2.d6008dad.chunk.css.map": "/okashishop/static/css/2.d6008dad.chunk.css.map",
-    "static/css/main.48131b19.chunk.css.map": "/okashishop/static/css/main.48131b19.chunk.css.map",
-    "static/js/2.50e707ec.chunk.js.LICENSE.txt": "/okashishop/static/js/2.50e707ec.chunk.js.LICENSE.txt",
-    "static/media/door.8492e619.jpg": "/okashishop/static/media/door.8492e619.jpg",
-    "static/media/footer.433c862d.png": "/okashishop/static/media/footer.433c862d.png",
-    "static/media/macha.171402b6.jpg": "/okashishop/static/media/macha.171402b6.jpg",
-    "static/media/obaachan.746b7b43.png": "/okashishop/static/media/obaachan.746b7b43.png",
-    "static/media/ocha.dd694839.jpg": "/okashishop/static/media/ocha.dd694839.jpg",
-    "static/media/osara.d2d3cf21.jpg": "/okashishop/static/media/osara.d2d3cf21.jpg",
-    "static/media/shockobaachan.a4cd1070.png": "/okashishop/static/media/shockobaachan.a4cd1070.png",
-    "static/media/watercolor.0f1ad691.jpeg": "/okashishop/static/media/watercolor.0f1ad691.jpeg"
+    "main.0395e330.css.map": "/okashishop/static/css/main.0395e330.css.map",
+    "main.a0a016c5.js.map": "/okashishop/static/js/main.a0a016c5.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.ef53da80.js",
-    "static/css/2.d6008dad.chunk.css",
-    "static/js/2.50e707ec.chunk.js",
-    "static/css/main.48131b19.chunk.css",
-    "static/js/main.7332fd50.chunk.js"
+    "static/css/main.0395e330.css",
+    "static/js/main.a0a016c5.js"
   ]
 }
