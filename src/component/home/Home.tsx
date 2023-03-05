@@ -30,6 +30,11 @@ export default function Home() {
     history.push("/checkout");
   };
 
+  const orderHistoryHandler = () => {
+    if (!currentUser) return history.push("/login");
+    history.push("/history");
+  };
+
   const LoginAndOutHandler = () => {
     if (!currentUser) return history.push("/login");
     signOut();
@@ -42,6 +47,7 @@ export default function Home() {
         <NavBar
           logOutHandler={LoginAndOutHandler}
           logOutText={currentUser ? "Log Out" : "Log In"}
+          orderHistoryButton={orderHistoryHandler}
           cartButton={() => setShowCart(true)}
         />
         <Banner backgrounds={macha} />
@@ -89,6 +95,14 @@ export default function Home() {
         show={showCart}
         onHide={() => setShowCart(false)}
       />
+      <div className="footer-container">
+        <div className="footer-text">
+          © 2020 Connie Ho. All Rights Reserved.
+        </div>
+        <div className="footer-text-right">
+          Feel Free to Contact Us at connie0380@gmail.com
+        </div>
+      </div>
     </Container>
   );
 }

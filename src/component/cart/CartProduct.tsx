@@ -38,23 +38,23 @@ export default function CartProduct({
           variant="outline-info"
           id={id}
           onClick={() => {
-            addOne && addOne(id);
-          }}
-          className={buttonClassName}
-        >
-          {" "}
-          +{" "}
-        </Button>
-        <Button
-          variant="outline-info"
-          id={id}
-          onClick={() => {
             minusOne && minusOne(id);
           }}
           className={buttonClassName}
         >
           {" "}
           -{" "}
+        </Button>
+        <Button
+          variant="outline-info"
+          id={id}
+          onClick={() => {
+            addOne && addOne(id);
+          }}
+          className={buttonClassName}
+        >
+          {" "}
+          +{" "}
         </Button>
       </Col>
       <Col>

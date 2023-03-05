@@ -1,80 +1,31 @@
-import React, { useRef, useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import {
   Button,
   Form,
   Card,
-  Alert,
   Row,
   Container,
-  Col,
 } from "react-bootstrap";
 import "./login.css";
 import { useAuth } from "../../firebaseAuth/AuthContext";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+
+interface LoginFormDate {
+  email: string;
+  password: string;
+  confirmPassword?: string;
+}
 
 export default function Login() {
   const location = useLocation();
-  const emailRef = useRef<HTMLInputElement>(null);
-  const passwordRef = useRef<HTMLInputElement>(null);
-  const confirmPasswordRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
   //@ts-ignore
   const { signUp, login } = useAuth();
   const [error, setError] = useState<string>();
   const [isLogin, setIsLogin] = useState(true);
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control, watch } = useForm<LoginFormDate>();
   // const onSubmit = (data) => console.log(data);
-
-  //Login & Sign in Form
-  const signInFormContent = [
-    {
-      id: "email",
-      label: "Email",
-      type: "email",
-      ref: emailRef,
-      placeholder: "Enter email",
-    },
-    {
-      id: "password",
-      label: "Password",
-      type: "password",
-      ref: passwordRef,
-      placeholder: "Enter password",
-    },
-    {
-      id: "confirmPassword",
-      label: "Confirm Password",
-      type: "password",
-      ref: confirmPasswordRef,
-      placeholder: "Re-enter password",
-    },
-  ];
-
-  const loginContent = signInFormContent.filter(
-    (el) => el.id !== "confirmPassword"
-  );
-
-  let displayForm = [];
-  displayForm = (isLogin ? loginContent : signInFormContent).map((el) => {
-    return (
-      <div className="pb-4" key={el.id}>
-        <div>{el.label}</div>
-        <input {...register(el.id, { required: true })} />
-        {errors[el.id] && (
-          <div className="text-danger position-absolute">
-            This field is required
-          </div>
-        )}
-      </div>
-    );
-  });
 
   //Switch Page
   useEffect(() => {
@@ -89,21 +40,32 @@ export default function Login() {
   };
 
   //Submit Form
-  async function handleLogin() {
+  async function handleLogin({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) {
     try {
-      await login(emailRef?.current?.value, passwordRef?.current?.value);
+      setError("");
+      await login(email, password);
       history.push("/");
     } catch {
       setError("Fail to log in");
     }
   }
 
-  async function submitSignUp() {
-    if (passwordRef?.current?.value !== confirmPasswordRef?.current?.value)
-      return setError("Password does not match!");
+  async function submitSignUp({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) {
     try {
       setError("");
-      await signUp(emailRef?.current?.value, passwordRef?.current?.value);
+      await signUp(email, password);
       history.push("/");
     } catch {
       setError("Failed to create account!");
@@ -126,7 +88,86 @@ export default function Login() {
                     : handleSubmit(submitSignUp)
                 }
               >
-                {displayForm}
+                <div className="pb-4">
+                  <Controller
+                    control={control}
+                    name="email"
+                    rules={{ required: "Required" }}
+                    render={({
+                      field: { onChange, onBlur, value, ref },
+                      fieldState: { error },
+                    }) => (
+                      <>
+                        <div>Email</div>
+                        <input
+                          className="input-box"
+                          ref={ref}
+                          onChange={onChange}
+                          onBlur={onBlur}
+                          value={value}
+                        />
+                        {error && (
+                          <div className="text-danger">{error.message}</div>
+                        )}
+                      </>
+                    )}
+                  />
+                  <Controller
+                    control={control}
+                    name="password"
+                    rules={{ required: "Required" }}
+                    render={({
+                      field: { onChange, onBlur, value, ref },
+                      fieldState: { error },
+                    }) => (
+                      <>
+                        <div className="pt-3">Password</div>
+                        <input
+                          className="input-box"
+                          ref={ref}
+                          onChange={onChange}
+                          onBlur={onBlur}
+                          value={value}
+                          type="password"
+                        />
+                        {error && (
+                          <div className="text-danger">{error.message}</div>
+                        )}
+                      </>
+                    )}
+                  />
+                  {!isLogin && (
+                    <Controller
+                      control={control}
+                      name="confirmPassword"
+                      rules={{
+                        required: "Required",
+                        validate: (value) =>
+                          value === watch("password") ||
+                          "The passwords do not match",
+                      }}
+                      render={({
+                        field: { onChange, onBlur, value, ref },
+                        fieldState: { error },
+                      }) => (
+                        <>
+                          <div className="pt-3">Confirm Password</div>
+                          <input
+                            className="input-box"
+                            ref={ref}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            value={value}
+                            type="password"
+                          />
+                          {error && (
+                            <div className="text-danger">{error.message}</div>
+                          )}
+                        </>
+                      )}
+                    />
+                  )}
+                </div>
                 <Button type="submit">{isLogin ? "Log In" : "Sign In"}</Button>
                 <Button className="mx-3 my-1" href="/">
                   Back
