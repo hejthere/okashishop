@@ -1,6 +1,7 @@
 # Online shop web application
 
 A responsive web application built for people to browse product and order online.
+https://hejthere.github.io/okashishop/
 
 This project was built using these technologies: 
 * HTML5 
